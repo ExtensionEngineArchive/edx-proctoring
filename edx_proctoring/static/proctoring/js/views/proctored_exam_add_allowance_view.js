@@ -122,20 +122,18 @@ var edx = edx || {};
 
             if (value === '') {
                 this.showError(this, allowanceKey, gettext('Required field'));
-                return false;
             }
             else if (isNaN(value)) {
-                this.showError(this, allowanceKey, gettext('Additional time must be a number.'));
-                return false;
+                this.showError(this, allowanceKey, gettext('Additional time must be a number'));
             }
-            else if (+value < 1) {
-                this.showError(this, allowanceKey, gettext('Additional time must be greater than zero.'));
-                return false;
+            else if (value < 1) {
+                this.showError(this, allowanceKey, gettext('Additional time must be greater than zero'));
             }
             else {
                 this.hideError(this, allowanceKey);
                 return true;
             }
+            return false;
         },
         validateAllowanceFields: function (view, values) {
             var returnValue = view.validateAllowanceValue(values.allowance_value);
